@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PRIME GYM - Sala de fitness premium pentru performanță maximă">
+    <meta name="keywords" content="fitness, sală, antrenamente, abonamente, antrenori personali, PRIME GYM">
+    <meta name="author" content="Denisa Sinteonean">
+    <meta name="robots" content="index, follow">
+    <title>PRIME GYM - Fitness Premium</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --prime-gold: #ffc300;
+            --prime-dark: #001d3d;
+            --prime-darker: #000814;
+            --prime-light: #ffd60a;
+            --prime-accent: #003566;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--prime-dark);
+            color: var(--prime-light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        
+        .navbar {
+            background-color: rgba(13, 13, 13, 0.95) !important;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--prime-gold) !important;
+            letter-spacing: 3px;
+        }
+
+        .navbar-brand span {
+            color: var(--prime-light);
+        }
+
+        .nav-link {
+            color: var(--prime-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--prime-gold) !important;
+        }
+
+        .navbar-toggler {
+            border-color: var(--prime-gold);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 195, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        
+        .carousel-item {
+            height: 100vh;
+            min-height: 500px;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            filter: brightness(0.6);
+        }
+
+        .carousel-caption {
+            bottom: 50%;
+            transform: translateY(50%);
+        }
+
+        .carousel-caption h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .carousel-caption p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: var(--prime-gold);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: var(--prime-gold);
+            border-radius: 50%;
+            padding: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-caption h2 {
+                font-size: 2rem;
+            }
+            .carousel-caption p {
+                font-size: 1rem;
+            }
+        }
+
+       
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            color: var(--prime-gold);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--prime-gold);
+        }
+
+        
+        #despre {
+            background-color: var(--prime-darker);
+        }
+
+        .about-img {
+            border: 3px solid var(--prime-gold);
+            border-radius: 10px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--prime-gold);
+            margin-bottom: 1rem;
+        }
+
+        
+        #abonamente {
+            background: #003566;
+        }
+
+        .card {
+            background-color: rgba(0, 29, 61, 0.9);
+            border: 1px solid rgba(255, 195, 0, 0.3);
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 195, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            color: var(--prime-gold);
+            font-size: 1.5rem;
+        }
+
+        .card-text {
+            color: #ffffff;
+        }
+
+        #abonamente .card li,
+        #abonamente .card h5 {
+            color: #ffffff;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--prime-gold);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--prime-light);
+        }
+
+        .btn-prime {
+            background-color: var(--prime-gold);
+            color: var(--prime-dark);
+            font-weight: 600;
+            border: none;
+            padding: 0.75rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-prime:hover {
+            background-color: #ffd60a;
+            color: var(--prime-dark);
+            transform: scale(1.05);
+        }
+
+        
+        #antrenori {
+            background-color: var(--prime-darker);
+        }
+
+        .trainer-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .trainer-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .trainer-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .trainer-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .trainer-info h4 {
+            color: var(--prime-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .trainer-info p {
+            color: var(--prime-light);
+            margin-bottom: 0;
+        }
+
+        
+        #contact {
+            background-color: var(--prime-dark);
+        }
+
+        .contact-info i {
+            color: var(--prime-gold);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .form-control {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 195, 0, 0.3);
+            color: var(--prime-light);
+        }
+
+        .form-control:focus {
+            background-color: rgba(255,255,255,0.15);
+            border-color: var(--prime-gold);
+            color: var(--prime-light);
+            box-shadow: 0 0 0 0.2rem rgba(255, 195, 0, 0.25);
+        }
+
+        .form-control::placeholder {
+            color: rgba(245, 245, 245, 0.5);
+        }
+
+        
+        footer {
+            background-color: var(--prime-darker);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--prime-gold);
+            letter-spacing: 3px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 195, 0, 0.1);
+            border: 1px solid var(--prime-gold);
+            border-radius: 50%;
+            color: var(--prime-gold);
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--prime-gold);
+            color: var(--prime-dark);
+        }
+
+        .footer-links a {
+            color: var(--prime-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--prime-gold);
+        }
+
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--prime-gold);
+            color: var(--prime-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: #ffd60a;
+            color: var(--prime-dark);
+            transform: translateY(-5px);
+        }
+
+        
+        .badge-prime {
+            background-color: #fb5607 !important;
+            color: #000000 !important;
+        }
+
+        .badge-disponibil {
+            background-color: #28a745 !important;
+        }
+
+        .badge-limitat {
+            background-color: #fb5607 !important;
+            color: #000000 !important;
+        }
+
+        .badge-indisponibil {
+            background-color: #dc3545 !important;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarPrime" data-bs-offset="100">
+
+   
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                PRIME<span>GYM</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrime" aria-controls="navbarPrime" aria-expanded="false" aria-label="Comută navigarea">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarPrime">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#acasa">Acasă</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#despre">Despre noi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#abonamente">Abonamente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#antrenori">Antrenori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <header id="acasa">
+        <div id="primeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#primeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#primeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#primeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#primeCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#primeCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="poze/fit.jpg" class="d-block w-100" alt="Sala de fitness modernă cu echipamente de ultimă generație">
+                    <div class="carousel-caption">
+                        <h2>BINE AI VENIT LA <span style="color: var(--prime-gold);">PRIME</span></h2>
+                        <p>Transformă-ți corpul, transformă-ți viața</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="poze/athlete-barbell.jpg" class="d-block w-100" alt="Zona de cardio cu aparate moderne de alergat și biciclete">
+                    <div class="carousel-caption">
+                        <h2>ECHIPAMENTE <span style="color: var(--prime-gold);">PREMIUM</span></h2>
+                        <p>Cele mai noi aparate de fitness din industrie</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="poze/instructor.jpg" class="d-block w-100" alt="Antrenament personal cu instructor specializat">
+                    <div class="carousel-caption">
+                        <h2>ANTRENORI <span style="color: var(--prime-gold);">CERTIFICAȚI</span></h2>
+                        <p>Ghidare profesională pentru rezultate garantate</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="poze/workout-in-gym.jpg" class="d-block w-100" alt="Zonă de antrenament cu greutăți și gantere">
+                    <div class="carousel-caption">
+                        <h2>FORȚĂ ȘI <span style="color: var(--prime-gold);">DETERMINARE</span></h2>
+                        <p>Depășește-ți limitele în fiecare zi</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="poze/sportive-couple.jpg" class="d-block w-100" alt="Clasă de fitness în grup cu energie pozitivă">
+                    <div class="carousel-caption">
+                        <h2>COMUNITATE <span style="color: var(--prime-gold);">PUTERNICĂ</span></h2>
+                        <p>Alătură-te familiei PRIME</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#primeCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#primeCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Următor</span>
+            </button>
+        </div>
+    </header>
+
+    
+    <section id="despre">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="section-title">Despre PRIME GYM</h2>
+                    <p class="lead">Mai mult decât o sală de fitness - un stil de viață.</p>
+                    <p>PRIME GYM a fost fondată în 2018 cu o viziune clară: să oferim un spațiu premium unde fiecare persoană poate atinge excelența fizică. Cu peste 2000 de membri activi și o echipă de 15 antrenori certificați, suntem liderul industriei fitness din regiune.</p>
+                    <p>Facilități noastre includ:</p>
+                    <ul>
+                        <li>Peste 500 mp de spațiu dedicat antrenamentelor</li>
+                        <li>Echipamente Technogym de ultimă generație</li>
+                        <li>Zonă de recuperare cu saună și jacuzzi</li>
+                        <li>Bar cu suplimente și shake-uri proteice</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src="poze/fitness-gym-equipment-dumbbells-with-towel.jpg" alt="Interior modern al sălii PRIME GYM cu echipamente profesionale" class="img-fluid about-img">
+                </div>
+            </div>
+
+            
+            <div class="row mt-5 text-center">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-clock"></i>
+                    </div>
+                    <h4>Program Non-Stop</h4>
+                    <p>Deschis 24/7 pentru confortul tău</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h4>Clase de Grup</h4>
+                    <p>Peste 50 de clase pe săptămână</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <h4>Monitorizare</h4>
+                    <p>Tracking digital al progresului</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h4>Siguranță</h4>
+                    <p>Dezinfectare și igienizare constantă</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="abonamente">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mx-auto">Tipuri de Abonamente</h2>
+                <p class="lead mt-4">Alege planul perfect pentru obiectivele tale</p>
+            </div>
+
+            <div class="row">
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="poze/jumping.jpg" class="card-img-top" alt="Zonă de cardio pentru abonamentul Basic">
+                        <div class="card-body text-center">
+                            <span class="badge badge-disponibil mb-2">Disponibil</span>
+                            <h3 class="card-title">BASIC</h3>
+                            <p class="card-text">Acces la zona de cardio și vestiare. Perfect pentru începători.</p>
+                            <div class="price">99 RON<span>/lună</span></div>
+                            <hr style="border-color: var(--prime-gold);">
+                            <h5>Include:</h5>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="bi bi-check-circle text-success"></i> Acces zona cardio</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Vestiare și dușuri</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Program 06:00-22:00</li>
+                                <li><i class="bi bi-x-circle text-danger"></i> Clase de grup</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 text-center pb-4">
+                            <a href="#contact" class="btn btn-prime">Înscrie-te</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="poze/sporty-girls.jpg" class="card-img-top" alt="Zonă completă de antrenament pentru abonamentul Standard">
+                        <div class="card-body text-center">
+                            <span class="badge badge-disponibil mb-2">Disponibil</span>
+                            <span class="badge badge-prime mb-2">Popular</span>
+                            <h3 class="card-title">STANDARD</h3>
+                            <p class="card-text">Acces complet la sală și clase de grup incluse.</p>
+                            <div class="price">149 RON<span>/lună</span></div>
+                            <hr style="border-color: var(--prime-gold);">
+                            <h5>Include:</h5>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="bi bi-check-circle text-success"></i> Acces complet sală</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Clase de grup</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Program 06:00-23:00</li>
+                                <li><i class="bi bi-x-circle text-danger"></i> Antrenor personal</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 text-center pb-4">
+                            <a href="#contact" class="btn btn-prime">Înscrie-te</a>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="poze/fit-woman.jpg" class="card-img-top" alt="Antrenament personal pentru abonamentul Premium">
+                        <div class="card-body text-center">
+                            <span class="badge badge-limitat mb-2">Locuri limitate</span>
+                            <span class="badge badge-prime mb-2">Recomandat</span>
+                            <h3 class="card-title">PREMIUM</h3>
+                            <p class="card-text">Experiența completă cu antrenor personal dedicat.</p>
+                            <div class="price">249 RON<span>/lună</span></div>
+                            <hr style="border-color: var(--prime-gold);">
+                            <h5>Include:</h5>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="bi bi-check-circle text-success"></i> Tot din Standard</li>
+                                <li><i class="bi bi-check-circle text-success"></i> 4 ședințe antrenor/lună</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Program 24/7</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Acces saună</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 text-center pb-4">
+                            <a href="#contact" class="btn btn-prime">Înscrie-te</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="poze/sneakers-and-dumbbell.jpg" class="card-img-top" alt="Experiență VIP exclusivă cu toate facilitățile">
+                        <div class="card-body text-center">
+                            <span class="badge badge-indisponibil mb-2">Sold Out</span>
+                            <span class="badge badge-prime mb-2">Exclusiv</span>
+                            <h3 class="card-title">VIP</h3>
+                            <p class="card-text">Pachet exclusiv cu toate serviciile și beneficiile.</p>
+                            <div class="price">399 RON<span>/lună</span></div>
+                            <hr style="border-color: var(--prime-gold);">
+                            <h5>Include:</h5>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="bi bi-check-circle text-success"></i> Tot din Premium</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Antrenor personal nelimitat</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Plan nutrițional</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Suplimente gratuite</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 text-center pb-4">
+                            <a href="#contact" class="btn btn-prime disabled">Lista de așteptare</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="antrenori">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mx-auto">Echipa Noastră de Antrenori</h2>
+                <p class="lead mt-4">Profesioniști dedicați succesului tău</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="trainer-card">
+                        <img src="poze/man-1282232_1280.jpg" alt="Antrenor Alexandru Popescu - specialist în culturism">
+                        <div class="trainer-info">
+                            <h4>Alexandru Popescu</h4>
+                            <p>Specialist Culturism</p>
+                            <p><small>10+ ani experiență | Certificat IFBB</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="trainer-card">
+                        <img src="poze/sport-2250970_640.jpg" alt="Antrenoare Maria Ionescu - instructor fitness și yoga">
+                        <div class="trainer-info">
+                            <h4>Maria Ionescu</h4>
+                            <p>Fitness & Yoga</p>
+                            <p><small>8 ani experiență | Certificat ACE</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="trainer-card">
+                        <img src="poze/man-2037255_1280.jpg" alt="Antrenor Andrei Dumitrescu - specialist CrossFit și HIIT">
+                        <div class="trainer-info">
+                            <h4>Andrei Dumitrescu</h4>
+                            <p>CrossFit & HIIT</p>
+                            <p><small>6 ani experiență | Certificat CrossFit L3</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4" style="color: var(--prime-gold);">Specializări și Clase</h3>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 text-center mb-3">
+                    <i class="bi bi-lightning-charge feature-icon"></i>
+                    <h5>HIIT</h5>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 text-center mb-3">
+                    <i class="bi bi-bicycle feature-icon"></i>
+                    <h5>Spinning</h5>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 text-center mb-3">
+                    <i class="bi bi-person-arms-up feature-icon"></i>
+                    <h5>Yoga</h5>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 text-center mb-3">
+                    <i class="bi bi-fire feature-icon"></i>
+                    <h5>CrossFit</h5>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 text-center mb-3">
+                    <i class="bi bi-water feature-icon"></i>
+                    <h5>Pilates</h5>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 text-center mb-3">
+                    <i class="bi bi-trophy feature-icon"></i>
+                    <h5>Culturism</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="contact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title mx-auto">Contactează-ne</h2>
+                <p class="lead mt-4">Suntem aici să te ajutăm să îți începi călătoria fitness</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h3 style="color: var(--prime-gold);">Informații de Contact</h3>
+                    <div class="contact-info mt-4">
+                        <p><i class="bi bi-geo-alt"></i> Strada Fitness nr. 123, București, România</p>
+                        <p><i class="bi bi-telephone"></i> +40 721 234 567</p>
+                        <p><i class="bi bi-envelope"></i> contact@primegym.ro</p>
+                        <p><i class="bi bi-clock"></i> Luni - Vineri: 06:00 - 23:00</p>
+                        <p><i class="bi bi-clock"></i> Weekend: 08:00 - 21:00</p>
+                    </div>
+
+                    <h4 class="mt-4" style="color: var(--prime-gold);">Program Recepție</h4>
+                    <p>Echipa noastră de la recepție este disponibilă pentru a răspunde la întrebări și pentru a te ghida în alegerea abonamentului potrivit.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3 style="color: var(--prime-gold);">Trimite-ne un Mesaj</h3>
+                    <form class="mt-4">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" placeholder="Numele tău" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Telefon">
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-control">
+                                <option value="">Selectează abonamentul dorit</option>
+                                <option value="basic">Basic - 99 RON/lună</option>
+                                <option value="standard">Standard - 149 RON/lună</option>
+                                <option value="premium">Premium - 249 RON/lună</option>
+                                <option value="vip">VIP - 399 RON/lună</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Mesajul tău"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-prime w-100">Trimite Mesajul</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h4 class="footer-brand">PRIME<span style="color: var(--prime-light);">GYM</span></h4>
+                    <p class="mt-3">Transformă-ți corpul, transformă-ți viața. Alătură-te comunității PRIME și descoperă cea mai bună versiune a ta.</p>
+                    <div class="social-icons mt-3">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Pagina noastră de Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Profilul nostru de Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Contul nostru de Twitter">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Canalul nostru de YouTube">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="Profilul nostru de TikTok">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--prime-gold);">Servicii</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#abonamente">Abonamente fitness</a></li>
+                        <li class="mb-2"><a href="#antrenori">Antrenament personal</a></li>
+                        <li class="mb-2"><a href="#antrenori">Clase de grup</a></li>
+                        <li class="mb-2"><a href="#contact">Consultanță nutrițională</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--prime-gold);">Contact</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt" style="color: var(--prime-gold);"></i> Str. Fitness nr. 123, București</li>
+                        <li class="mb-2"><i class="bi bi-telephone" style="color: var(--prime-gold);"></i> +40 721 234 567</li>
+                        <li class="mb-2"><i class="bi bi-envelope" style="color: var(--prime-gold);"></i> contact@primegym.ro</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 195, 0, 0.3);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2024 PRIME GYM. Toate drepturile rezervate.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Dezvoltat cu <i class="bi bi-heart-fill" style="color: var(--prime-gold);"></i> pentru performanță</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <a href="#acasa" class="scroll-top" id="scrollTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+       
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+        });
+
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
